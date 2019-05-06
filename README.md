@@ -1,8 +1,2 @@
 # SpringWebProject
-  ## Test 1
-sadfsdfsa
-fsadfasd
-sadfsadfasdsa123
-testsetsetsadfsdf
-sdfsadf
-sadfsadf
+  정독하며 정리하기
