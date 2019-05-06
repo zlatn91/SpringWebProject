@@ -1,0 +1,39 @@
+[1] Model 2는 로직과 화면을 분리한다 라는 스타일
+
+    사용자의 Request(요청)에는 특별한 상황이 아닌 이상 먼저 Controller를 호출
+    이런 설계의 이유는 나중에 View를 교체하더라도 사용자가 호출하는 URL 자체에 변화가 없게 만들어 주기 때문
+    컨트롤러는 데이터를 처리하는 존재를 이용해서 데이터(Model)을 처리하고 Response 할 때 필요한 데이터(Model)을
+    View 쪽으로 전달하게 됨
+
+
+[2] 스프링 MVC
+
+    Servlet API의 RequestDispatcher 등을 이용해서 직접 처리했지만 스프링은 내부에서 이러한 처리를 함
+    개발자들은 스프링 MVC의 API를 이용해서 코드를 작성하게 됨
+
+    (1) 사용자의 Request는 Front-Controller인 DispatcherServlet을 통해서 처리
+
+    (2),(3) HandlerMapping은 Request의 처리를 담당하는 컨트롤러를 찾기 위해서 존재
+        RequestMappingHandlerMapping 같은 경우는 개발자가 @RequestMapping 어노테이션이
+        적용된 것을 기준으로 판단하게됨
+        적절한 컨트롤러가 찾아졌다면 HandlerAdapter를 이용해서 해당 컨트롤러를 동작
+
+    (4) Controller는 개발자가 작성하는 클래스로 실제 Request를 처리하는 로직을 작성함
+        이때 View에 저달해야 하는 데이터는 주로 Model이라는 객체에 담아서 전달
+        Controller는 다양한 타입의 결과를 반환하고 이에 대한 처리는 ViewResolver를 이용
+
+    (5) ViewResolver는 Controller가 반환한 결과를 어떤 View를 통해서 처리하는 것이 좋을지 해석함
+        가장 흔하게 사용하는 설정은 servlet-context.xml에 정의된 InternalResouceViewResolver
+
+    (6),(7) View는 실제로 응답을 보내야 하는 데이터를 jsp 등을 이용해서 생성하는 역할을 하게 된다
+        만들어진 응답은 DispatcherServlet을 통해서 전달
+
+    // Dispatcher는 Request의 입구이자 Response의 출구
+
+    모든 Request는 DispatcherServlet을 통하고 이 방식을 Front-Controller 패턴이라 함
+    이 패턴은 흐름을 강제로 제한할 수 있다
+    ex) HttpServlet을 상속해서 만든 클래스를 이용하는 경우 특정 개발자는 이를 활용할 수 있지만
+    다른 개발자는 자신이 하던 방식대로 HttpServlet을 그대로 상속해서 개발 할 수 있다
+
+    Front-Controller 페턴을 이용하는 경우 모든 Request의 처리에 대한 분배가 정해진 방식대로만 동작하기
+    때문에 더 엄격함

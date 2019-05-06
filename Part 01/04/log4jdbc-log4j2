@@ -1,0 +1,45 @@
+
+
+[1] 쓰는 이유
+
+  MyBatis는 내부적으로 JDBC의 PreparedStatement를 이용
+  SQL에 전달되는 파라미터는 JDBC에서의 ?로 치환되어 전송하기 때문에
+  값이 제대로 됐는지 확인하기 어렵고, 내용확인의 어려움
+
+  이런문제를 해결하기 위해 사용
+
+[2] 책에선 1.16 버전 사용 pom.xml
+
+[3] 로그 설정 파일 추가, JDBC의 연결 정보 수정
+
+  src/main/resources/log4jdbc.log4j2.properties 생성 (text)
+
+  log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
+
+  root-context.xml
+                                                                                       
+  <property name="driverClassName"
+      value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+  <property name="jdbcUrl"
+      value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"></property>
+
+ driverClassName에 value를 net.sf.log4jdbc.sql.jdbcapi.DriverSpy 로 변경
+ 그리고 jdbcUrl 에 log4jdbc가 추가됨
+
+[4] 로그의 레벨 설정을 이용해서 로그의 양을 조절
+
+  src/test/resource/log4j.xml !!main이 아닌 test
+
+  <!-- log4jdbc-log4j2 -->
+  <logger name="jdbc.audit">
+    <level value="warn"/>
+  </logger>
+  <logger name="jdbc.resultset">
+    <level value="warn"/>
+  </logger>
+  <logger name="jdbc.connection">
+    <level value="warn"/>
+  </logger>
+
+  로그의 자세한 설정은
+  https://logging.apache.org/log4j/2.x/manual/customloglevels.html

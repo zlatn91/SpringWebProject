@@ -1,0 +1,37 @@
+
+[1] 절대경로 추가
+
+    웹프로젝트는 가능하면 절대 경로를 이용하는 구조를 사용하는것이 바람직
+
+    Tomcat -> Modules -> Edit -> /
+    or
+    Project -> Properties -> Web Project Settings -> Context root -> /
+
+[2] 스프링에서 관리되는 클래스는 화면상에서 클래스 옆에 작게 's'모양의 아이콘이 추가된다
+
+    Controller의 선언부에는 @Controller와 함께 @RequestMapping을 많이 쓴다
+    @RequestMapping 어노테이션에 값을 설정하면
+    현재 클래스의 모든 메소드들이 설정 값을 기본적인 경로로 지정
+
+    ex) /sample/* 로 지정했다면
+        /sample/aaa
+        /sample/bbb는 모두
+        SampleController 에서 처리된다
+
+    @RequestMapping은 클래스와 메소드 선언에 사용가능
+
+[3] 로그를 살펴 보면
+    "{[/],methods=[GET]}" 은 onto public org.zerock.controller.HomeController.home(java.util.Locale,org.springframework.ui.Model) 에서
+    "{[/sample/*]}" 은 onto public void org.zerock.controller.SampleController.basic()
+    에 맵핑이 되어있고 호출가능한 경로라는것을 확인할 수 있다.
+
+[4] @RequestMapping의 변화
+
+    @Controller 어노테이션은 추가적인 속성을 지정할 수 없지만
+    @RequestMapping은 가능한데
+    가장 많이 사용하는것은 method 속성 이고 (GET, POST) 방식을 구분해서 사용할때 이용한다
+
+    스프링 4.3 버전부터는 @RequestMapping을 줄여서 사용할 수 있는
+    @GetMapping, @PostMapping이 등장 (축약형의 표현)
+    최근에는 GET,POST 이외에 PUT, DELETE 방식등도 점점 많이 사용되고 있다
+    (간편하기는 하지만 기능에 대한 제한은 많은 편)

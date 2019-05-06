@@ -1,0 +1,38 @@
+[0] root-context.xml -> Namespaces -> mybatis-spring (check)
+    root-context.xml -> Source ->
+      <mybatis-spring:scan base-package="org.zerock.mapper"/>
+
+      mybatis-spring:scan 태그는 지정된 패키지에 모든 MyBatis 관련 어노테이션을 스캔해 처리한다
+
+[1] Java Interface의 어노테이션을 이용한 테스트
+
+      클래스 선언부에 @MapperScan을 이용하여 처리 (mybatis-spring에서 사용하는)
+      Mybatis-Spring은 자동적으로 Mapper 인터페이스를 이용해서 실제 SQL처리가 되는 클래스를 자동으로 생성
+      따라서 개발자들은 인터페이스와 SQL만을 작성하는 방식으로 모든 JDBC 처리를 끝낼 수 있다
+
+    TimeMapper 라는 인터페이스를 만든후
+      @Select("select SYSDATE from DUAL")
+      public String getTime();
+    어노테이션을 이용하여 SQL을 메소드에 추가
+
+    스프링이 인터페이스를 이용해서 객체를 생성한다는것에 주목
+
+[2] XML을 이용한 테스트
+
+    인터페이스의 어노테이션을 이용하는 방식이 압도적으로 편리하지만
+    SQL이 복잡해지거나 길어질 경우에는 XML을 이용하는 방식을 더 선호함
+
+    Mybatis-Spring의 경우 인터페이스, XML 동시 사용가능
+    XML의 파일위치, XML 파일에 지정하는 Namespace 속성이 중요
+
+    XML 파일위치의 경우 Mapper 인터페이스가 있는 곳에 같이 작성하거나
+    src/main/resources에 XML을 저장할 폴더를 생성
+
+    XML파일명의 관례는 없지만 가능하다면 Mapper 인터페이스와 같은 이름을 사용하는것이 가독성을 높임
+
+    org -> zerock -> mapper -> TimeMapper.xml
+    반드시 한번에 한 폴더씩 만든다
+    한번에 모든 경로의 폴더를 만들면 올바른 인식이 되지 않는 문제가 발생
+
+    XML 파일에는 Mybatis의 XML 매퍼에서 이용하는 태그에 대한 설정이 필요
+    자세한 정보는 http://www.mybatis.org/mybatis-3/ko/getting-started.html (한글!!!)

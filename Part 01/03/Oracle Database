@@ -1,0 +1,32 @@
+
+[1] 8080 port 변경
+
+    Oracle 11g는 기본적으로 8080
+    Tomcat 역시 기본 포트가 8080이기 때문에
+    Oracle과 동시 사용시 문제가 발생하기 때문에
+
+    포트번호 확인
+      select dbms_xdb.gethttpport() form duel;
+    포트가 8080으로 출력시
+      exec dbms_xdb.sethttpport(9090);
+    으로 변경
+
+    보통 1000번 이하는 예약 포트
+
+    포트변경후에는 포트를 재확인하여 올바르게 변경됐나 확인요구
+
+[2] JDBC 연결
+
+    SQL Developer -> jdbc/lib -> ojdbc8.jar
+
+    또는
+
+    https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html
+    에서 다운로드
+
+    Project -> Properties -> Build Path -> ojdbc8.jar
+    Project -> Properties -> Deployment Assembly -> Add -> Java Build Path Entries -> ojdbc8.jar
+
+    (lib 폴더 미리 만들고?)
+
+[3]

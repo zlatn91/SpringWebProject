@@ -1,0 +1,11 @@
+[1] 예제의 패키지 설정
+
+    org.zerock.config: 프로젝트와 관련된 설정 클래스들의 보관 패키지
+    org.zerock.controller: 스프링 MVC의 Controller들의 보관 패키지
+    org.zerock.service: 스프링의 Service 인터페이스와 구현 클래스 패키지
+    org.zerock.domain: VO, DTO 클래스들의 패키지
+    org.zerock.persistence: MyBatis Mapper 인터페이스 패키지
+    org.zerock.exception: 웹 관련 예외처리 패키지
+    org.zerock.app: 스프링의 AOP 관련 패키지
+    org.zerock.security: 스프링의 Security 관련 패키지
+    org.zerock.util: 각종 유틸리티 클래스 관련 패키지

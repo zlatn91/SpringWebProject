@@ -1,0 +1,46 @@
+[1] Annotation
+
+    (1) Lombok
+
+        @Setter
+
+          Attribute : value
+                        접근 제한 속성 (기본값은 lombok.AccessLevel.PUBLIC)
+
+                      onMethod
+                        setter 메소드 생성시 추가할 어노테이션을 지정
+
+                        up to JDK 7
+                          @Setter(onMethod=@__({@AnnotationGoHere})
+                        from JDK8
+                          @Setter(onMethod_={@AnnotationsGoHere})
+
+                      onParam
+                        setter 메소드의 파라미터에 어노테이션을 사용하는 경우
+
+        @Data
+          @ToString
+          @EqualsAndHashCode
+          @Getter/@Setter
+          @RequiredArgsConstructor
+          (세부설정이 필요 없는 경우라면 주로 @Data를 사용하여 모든 메소드를 자동 생성함)
+        @Log4j
+
+    (2) Spring
+
+        @Autowired
+        @Component
+
+    (3) Testing
+
+        @RunWith
+          테스트시 필요한 클래스를 지정
+          스프링은 SpringJunit4ClassRunner 클래스가 대상이 된다
+
+        @ContextConfiguration
+          어떤 설정 정보를 읽어 들여하는지를 명시
+          속성으로는 locations를 이용해서 문자열로 xml 설정 파일을 명시 할 수 있고
+          classes 속성으로 @Configuration이 적용된 클래스를 지정해 줄 수도 있다
+
+        @Test
+          junit에서 해당 메소드가 JUnit상에서 단위 테스트의 대상인지 알려 줌

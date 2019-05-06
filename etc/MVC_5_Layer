@@ -1,0 +1,12 @@
+
+
+
+Presentation Layer (프리젠테이션 계층)
+Control Layer (제어 계층)
+Business Layer (비지니스 로직 계층)
+Persistence Layer (퍼시스턴스 계층)
+Domain Model Layer (도메인 모델 계층)
+
+
+
+

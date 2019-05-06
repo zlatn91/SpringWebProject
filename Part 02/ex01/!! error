@@ -1,0 +1,51 @@
+[1] Log4j
+
+    (1) 나의 해결법
+    log4j dependency 부분에 <scope>runtime</scope> 부분을 주석처리하거나
+    <scope>provided</scope> 로 설정하면 오류는 해결됨
+    !! <scope></scope>에 대해 알아보자 !!
+
+    (2) 커뮤니티에 올랴온 해결법
+        개정판 127페이지의 @Log4j가 에러를 발생하시는 경우에는 다음과 같은 내용들을 확인해 주세요..
+        1. eclipse.ini 파일에 -vm 설정을 올바르게 추가했는지 확인해 주세요..
+        2. pom.xml에 Log4j 1.2.17버전을 하나 더 추가해 보세요..
+          <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+          <dependency>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>1.18.2</version>
+              <scope>provided</scope>
+          </dependency>
+          <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+          <dependency>
+              <groupId>log4j</groupId>
+              <artifactId>log4j</artifactId>
+              <version>1.2.17</version>
+          </dependency>
+
+        3. 기존에 있는 log4j 1.2.15 버전 부분을 지운후에 다시 테스트 해 보시기 바랍니다.
+
+          <dependency>
+           <groupId>log4j</groupId>
+           <artifactId>log4j</artifactId>
+           <version>1.2.15</version>
+           <exclusions>
+            <exclusion>
+             <groupId>javax.mail</groupId>
+             <artifactId>mail</artifactId>
+            </exclusion>
+            <exclusion>
+             <groupId>javax.jms</groupId>
+             <artifactId>jms</artifactId>
+            </exclusion>
+            <exclusion>
+             <groupId>com.sun.jdmk</groupId>
+             <artifactId>jmxtools</artifactId>
+            </exclusion>
+            <exclusion>
+             <groupId>com.sun.jmx</groupId>
+             <artifactId>jmxri</artifactId>
+            </exclusion>
+           </exclusions>
+           <scope>runtime</scope>
+          </dependency>

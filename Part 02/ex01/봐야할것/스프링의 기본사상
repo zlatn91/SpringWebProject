@@ -1,0 +1,12 @@
+[1] 기존의 Servlet/JSP에서는 HttpServletRequest, HttpServletResponse라는 타입의 객체를 이용해
+    브라우저에서 전송한 정보를 처리하는 방식.
+
+[2] 스프링의 경우 Servlet/JSP 위에 하나의 계층을 더한 형태가 됨
+
+    - 개발자의 경우 Servlet/JSP의 API에 신경 쓰지 않고 웹 어플리케이션을 제작
+    - 스프링 역시 내부적으로는 Servlet API를 활용
+    - Spring MVC는 내부적으로 Servlet/JSP를 처리해줌
+    
+[3] 스프링 MVC를 이용하게 되면 개발자들은 직접적으로 HttpServletRequest/HttpServletResponse 등 과 같이
+     Servlet/JSP의 API를 사용할 필요성이 현저하게 줄어듬
+     스프링은 중간에 연결 역할을 하기 때문에 가능

@@ -1,0 +1,18 @@
+프로젝트 구동시 관여하는 xml
+
+  web.xml, root-context.xml, servlet-context.xml
+
+  web.xml은 Tomcat 구동과 관련된 설정
+  나머지 두 파일은 스프링과 관련됨
+
+[1] 프로젝트의 구동은 web.xml 에서 시작
+
+  (1) 가장 먼저 구동되는 Context Loader Listener
+      웹 어플리케이션 구동시 같이 동작하므로 프로젝트를 실행하면 가장먼저 로그를 출력하면서 기록하는것을 볼 수 있다.
+  (2) root-context.xml 이 처리되면 파일에 빈 설정들이 동작 하게 됨
+  (3) root-context.xml 에 정의된 객체(Bean) 들은 스프링의 영역(Context) 안에 생성되고
+      객체간의 의존성이 처리됨.
+  (4) 스프링 MVC에서 사용하는 DispatcherServlet 이라는 서블릿과 관련된 설정이 동작
+  (5) DispatcherServelet 에서 XmlWebApplicationContext 를 이용해서 servlet-context.xml을
+      로딩하고 해석하기 시작함
+      이 과정에서 등록된 객체 (Bean) 들은 기존에 만들어진 객체 (Bean) 들과 같이 연동되게 함

@@ -1,0 +1,15 @@
+[1] Java Resources
+  src/main/java 작성되는 코드의 경로
+  src/main/resources 실행할 때 참조하는 기본 경로 (주로 설정 파일들을 넣는다)
+  src/test/java 테스트 코드를 넣는 경로
+  src/test/resources 테스트 관련 설정 파일 보관 경로
+
+[2] src/main/webapp/WEB-INF/spring
+  appServet/servlet-context.xml 웹과 관련된 스프링 설정파일
+  root-context.xml 스프링 설정 파일
+  views 템플릿 프로젝트의 jsp 파일 경로
+  views/xxx.jsp
+  web.xml Tomcat의 web.xml 파일
+
+[3] pom.xml
+  Maven이 사용하는 pon.xml

@@ -1,0 +1,5 @@
+[1] mybatis
+[2] mybatis-spring
+[3] spring-tx (transaction)
+[4] spring-jdbc
+[5] sqlSessionFactory

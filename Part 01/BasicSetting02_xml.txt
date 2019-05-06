@@ -1,0 +1,59 @@
+[1] lombok , spring-test
+
+	http://projectlombok.org
+
+	1.18.2 download
+
+	terminal > cd xxx/xxx (lombok.jar상위 디렉토리로이동)
+	java -jar lombok.jar
+
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>
+
+	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.2</version>
+		<scope>provided</scope>
+	</dependency>
+
+[2] JUnit
+
+	Spring 4.x이상은반드시junit의 버전을 4.10 이상으로
+
+	<!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+		 <groupId>junit</groupId>
+		 <artifactId>junit</artifactId>
+		 <version>4.12</version>
+		 <scope>test</scope>
+	</dependency>
+
+[3] Error
+	@Component
+	@Data
+	public class Restaurant {
+
+		@Setter(onMethod_ = @Autowired)
+		private Chef chef;
+	}
+
+	@Autowired부터import 하고 @Setter import
+
+[4] XML을 이용하는 의존성 주입 (root-context.xml)
+
+	스프링에서 관리되는 객체를 빈(Bean) 이라 하고 이에 대한 설정은 XML과 자바 이용가능
+
+	root-context.xml -> namespaces -> context (check)
+	source -> <context:component-scan base-package="org.zerock.sample"></context:component-scan>
+
+	@Component의 특별한 점
+	<context:component-scan> 은 @Component 만 검사하며 일반적으로
+	@Controller, @Service 및 @Repository 를 찾지 않습니다. @Component로 주석을 달았기 때문에 스캔됩니다.
+
+	Bean Graph 탭을 선택하면 해당 path의 객체가 설정된 것을 볼 수 있다
